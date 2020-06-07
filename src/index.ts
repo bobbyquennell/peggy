@@ -1,5 +1,5 @@
 import greeter from 'greeter';
 
-const user = 'Jane';
+const user = 'Peggy';
 
 document.body.textContent = greeter(user);
