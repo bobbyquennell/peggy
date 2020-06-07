@@ -1,6 +1,4 @@
-const greeter = (person: string): string => {
-  return 'Hello, ' + person;
-};
+import greeter from 'greeter';
 
 const user = 'Jane';
 
