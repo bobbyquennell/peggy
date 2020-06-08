@@ -3,6 +3,12 @@ const path = require('path');
 module.exports = {
   entry: './src/index.ts',
   devtool: 'inline-source-map',
+  devServer: {
+    hot: true, // Enable webpack's Hot Module Replacement feature (https://webpack.js.org/configuration/dev-server/#devserverhot)
+    compress: true, // Enable gzip compression for everything served (https://webpack.js.org/configuration/dev-server/#devservercompress)
+    open: true, // Tells dev-server to open the default browser after server had been started.(https://webpack.js.org/configuration/dev-server/#devserveropen)
+    port: 8080,
+  },
   module: {
     rules: [
       {
