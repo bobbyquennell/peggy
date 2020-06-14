@@ -21,7 +21,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Peggy - bootstrap your frontend project', // TODO: create own template later
-      hash: true,
+      hash: false,
     }),
   ],
   resolve: {
@@ -33,7 +33,30 @@ module.exports = {
     // and https://webpack.js.org/configuration/resolve/#resolvemodules
   },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].[hash].js',
     path: path.resolve(__dirname, 'dist'),
+  },
+  optimization: {
+    splitChunks: {
+      /**
+       * extract third-party libraries, such as lodash or react, to a separate vendor chunk
+       * as they are less likely to change than our local source code.
+       * This step will allow clients to request even less from the server to stay up to date
+       * further reading:
+       * https://webpack.js.org/guides/caching/
+       * https://medium.com/@hpux/webpack-4-in-production-how-make-your-life-easier-4d03e2e5b081
+       *
+       * below settings comes from https://webpack.js.org/plugins/split-chunks-plugin/#split-chunks-example-2
+       * warning: This might result in a large chunk containing all external packages.
+       * It is recommended to only include your core frameworks and utilities and dynamically load the rest of the dependencies.
+       */
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
   },
 };
