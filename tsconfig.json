@@ -3,6 +3,7 @@
       "allowJs": true,
       "allowSyntheticDefaultImports": true,
       "baseUrl": "src",
+      "importsNotUsedAsValues": "preserve",
       "jsx": "react",
       "lib": ["ES2020", "DOM"],
       "module": "ES2020",
