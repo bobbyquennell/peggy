@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/index.tsx',
   devtool: 'inline-source-map',
   devServer: {
     hot: true, // Enable webpack's Hot Module Replacement feature (https://webpack.js.org/configuration/dev-server/#devserverhot)
