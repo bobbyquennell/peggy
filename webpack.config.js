@@ -21,7 +21,19 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                auto: true, // / Automatically enable css modules for files satisfying `/\.module\.\w+$/i` RegExp.
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              },
+              localsConvention: 'camelCase',
+            },
+          },
+        ],
       },
     ],
   },
