@@ -4,12 +4,16 @@ import greeter from 'greeter';
 interface ComponentProps {
   userName: string;
   children: React.ReactNode;
+  className?: string;
 }
 
-const App: React.FC<ComponentProps> = (props: ComponentProps) => {
-  const { userName, children } = props;
+const App: React.FC<ComponentProps> = ({
+  userName,
+  children,
+  className,
+}: ComponentProps) => {
   return (
-    <div>
+    <div className={className}>
       {greeter(userName)}
       {children}
     </div>
