@@ -7,7 +7,6 @@ import './app.css';
 const { redTitle } = require('./index.module.css');
 
 ReactDOM.render(
-  // TODO: should be able to apply className on App component
   <App className={redTitle} userName={'Peggy'}>
     <div className="green-title">Green</div>
     <div className={redTitle}>Red</div>

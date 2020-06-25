@@ -1,9 +1,9 @@
 import React from 'react';
 import greeter from 'greeter';
 
-interface ComponentProps {
+interface ComponentProps extends React.HTMLAttributes<HTMLDivElement> {
   userName: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 }
 
