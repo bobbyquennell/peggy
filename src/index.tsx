@@ -7,7 +7,11 @@ import './app.css';
 const { redTitle } = require('./index.module.css');
 
 ReactDOM.render(
-  <App className={redTitle} userName={'Peggy'}>
+  <App
+    className={redTitle}
+    userName={'Peggy'}
+    style={{ margin: 20, border: '1px solid black', display: 'flex' }}
+  >
     <div className="green-title">Green</div>
     <div className={redTitle}>Red</div>
   </App>,

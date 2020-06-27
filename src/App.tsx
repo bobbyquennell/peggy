@@ -1,19 +1,22 @@
 import React from 'react';
 import greeter from 'greeter';
 
-interface ComponentProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ComponentProps extends React.ComponentPropsWithoutRef<'div'> {
   userName: string;
   children?: React.ReactNode;
-  className?: string;
 }
+// type ComponentProps = {
+//   userName: string;
+//   children?: React.ReactNode;
+// } & React.ComponentPropsWithoutRef<'div'>;
 
 const App: React.FC<ComponentProps> = ({
   userName,
   children,
-  className,
+  ...rest
 }: ComponentProps) => {
   return (
-    <div className={className}>
+    <div {...rest}>
       {greeter(userName)}
       {children}
     </div>
