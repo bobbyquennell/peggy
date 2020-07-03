@@ -11,6 +11,10 @@
       "noImplicitAny": true,
       "outDir": "./dist/",
       "preserveConstEnums": true,
+      "plugins": [{ "name": "typescript-plugin-css-modules",
+        "options": {
+        "classnameTransform": "camelCaseOnly"
+      }}],
       "removeComments": true,
       "sourceMap": true,
       "target": "ES2020"

@@ -17,8 +17,12 @@ declare module '*.module.css' {
 // https://ringcentral.github.io/integration-blog/blog/2019/04/03/blog-import-the-style-to-the-typescript-file.html
 // https://stackoverflow.com/a/41946697/4390115
 
-// TODO: in order to support intellisense for class names, consider to use below css module loaders:
+// in order to support intellisense for class names, consider to use below css module loaders:
 // webpack loaders :
 // https://github.com/TeamSupercell/typings-for-css-modules-loader#readme
 // https://github.com/Jimdo/typings-for-css-modules-loader
 // https://github.com/seek-oss/css-modules-typescript-loader
+
+// a better solution to support the intellisense for class names, without generating *.d.ts files into your repo.
+// using typescript plugin: https://github.com/mrmckeb/typescript-plugin-css-modules
+// inspired by : https://ringcentral.github.io/integration-blog/blog/2019/04/03/blog-import-the-style-to-the-typescript-file.html
