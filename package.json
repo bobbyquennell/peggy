@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "eslint . --ext .js,.ts,.jsx,.tsx --fix",
-    "start:dev": "webpack-dev-server"
+    "start:dev": "webpack serve"
   },
   "author": "bobby wang",
   "license": "ISC",
@@ -34,7 +34,7 @@
     "typescript": "^3.9.5",
     "typescript-plugin-css-modules": "^2.3.0",
     "webpack": "^5.47.1",
-    "webpack-cli": "^3.3.11",
+    "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.0"
   },
   "husky": {
