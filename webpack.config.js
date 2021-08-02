@@ -29,8 +29,8 @@ module.exports = {
               modules: {
                 auto: true, // / Automatically enable css modules for files satisfying `/\.module\.\w+$/i` RegExp.
                 localIdentName: '[name]__[local]___[hash:base64:5]',
+                exportLocalsConvention: 'camelCase',
               },
-              localsConvention: 'camelCase',
             },
           },
         ],
