@@ -7,7 +7,7 @@ import styles from './index.module.css';
 ReactDOM.render(
   <App
     className={styles.redTitle}
-    userName={'Peggy'}
+    userName={'Hello'}
     style={{ margin: 20, border: '1px solid black', display: 'flex' }}
   >
     <div className="green-title">Green</div>

@@ -1,5 +1,3 @@
 module.exports = {
-  extends: [
-    'peggy',
-  ],
+  extends: ['peggy'],
 };
