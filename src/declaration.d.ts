@@ -26,3 +26,13 @@ declare module '*.module.css' {
 // a better solution to support the intellisense for class names, without generating *.d.ts files into your repo.
 // using typescript plugin: https://github.com/mrmckeb/typescript-plugin-css-modules
 // inspired by : https://ringcentral.github.io/integration-blog/blog/2019/04/03/blog-import-the-style-to-the-typescript-file.html
+
+declare module '*.module.scss' {
+  const classes: { readonly [key: string]: string };
+  export default classes;
+}
+
+declare module '*.module.sass' {
+  const classes: { readonly [key: string]: string };
+  export default classes;
+}

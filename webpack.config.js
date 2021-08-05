@@ -2,7 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const isDevelopment = process.env.NODE_ENV === 'development';
+const isProduction = process.env.NODE_ENV === 'production';
 module.exports = {
   entry: './src/index.tsx',
   devtool: 'inline-source-map',
@@ -15,22 +17,77 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.ts(x)?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/i,
+        test: /\.css$/,
+        exclude: /\.module\.css$/,
+        use: [
+          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: isDevelopment,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.module\.css$/,
+        use: [
+          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                auto: true,
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+                exportLocalsConvention: 'camelCase',
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        exclude: /\.module\.(scss|sass)$/,
+        use: [
+          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: isDevelopment,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: isDevelopment,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.module\.s(a|c)ss$/,
         use: [
           'style-loader',
           {
             loader: 'css-loader',
             options: {
+              sourceMap: isDevelopment,
               modules: {
-                auto: true, // / Automatically enable css modules for files satisfying `/\.module\.\w+$/i` RegExp.
+                auto: true,
                 localIdentName: '[name]__[local]___[hash:base64:5]',
                 exportLocalsConvention: 'camelCase',
               },
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: isDevelopment,
             },
           },
         ],
@@ -43,10 +100,11 @@ module.exports = {
       title: 'Peggy - bootstrap your frontend project', // TODO: create own template later
       hash: false,
     }),
+    new MiniCssExtractPlugin(),
     new ForkTsCheckerWebpackPlugin(),
   ],
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', 'jsx'],
+    extensions: ['.tsx', '.ts', '.js', 'jsx', '.css', '.scss'],
     modules: [path.resolve(__dirname, 'src'), 'node_modules'], // this is similar to tsconfig: "baseUrl": "src"(https://www.typescriptlang.org/v2/en/tsconfig#baseUrl)
     // so I don't need to write something like: import greeter from './greater', in stead, I can write: import greeter from 'greeter';
     // I don't need to write "../" or "./" when I import modules inside my project 'src' folder
