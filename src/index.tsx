@@ -1,11 +1,11 @@
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import React from 'react';
 import App from 'App';
 import './app.scss';
 import styles from './index.module.scss';
 import classnames from 'classnames';
 
-ReactDOM.render(
+render(
   <App
     className={styles.redTitle}
     userName={'Hello'}
