@@ -9,6 +9,7 @@ module.exports = {
   entry: './src/index.tsx',
   devtool: 'inline-source-map',
   devServer: {
+    contentBase: path.join(__dirname, 'public'),
     hot: true, // Enable webpack's Hot Module Replacement feature (https://webpack.js.org/configuration/dev-server/#devserverhot)
     compress: true, // Enable gzip compression for everything served (https://webpack.js.org/configuration/dev-server/#devservercompress)
     open: true, // Tells dev-server to open the default browser after server had been started.(https://webpack.js.org/configuration/dev-server/#devserveropen)
@@ -97,7 +98,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Peggy - bootstrap your frontend project', // TODO: create own template later
+      title: 'Peggy - bootstrap your frontend project',
+      template: 'public/index.html',
       hash: false,
     }),
     new MiniCssExtractPlugin(),

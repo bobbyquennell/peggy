@@ -14,5 +14,5 @@ render(
     <div className="green-title">Green</div>
     <div className={classnames(styles.redTitle, styles.bigFont)}>Red</div>
   </App>,
-  document.querySelector('body'),
+  document.getElementById('root'),
 );
