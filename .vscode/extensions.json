@@ -1,0 +1,6 @@
+{
+  "recommendations": [
+    "visualstudioexptteam.vscodeintellicode",
+    "dbaeumer.vscode-eslint"
+  ]
+}
